@@ -3,7 +3,7 @@
 <head>
 <!-- Ссылка на фавиконку -->
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    
+
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript">
     (function(m,e,t,r,i,k,a){
@@ -578,10 +578,50 @@ section{padding:90px 0; position:relative; border:0 !important;}
 .filebox .file-sub{display:block;margin-top:2px;font-size:11px;color:#5C6B60;font-weight:500}
 .filebox .file-btn{flex:none;padding:9px 12px;border-radius:9px;border:1px solid #AFC8B0;background:#fff;font-size:12.5px;font-weight:850;color:#1F4533}
 .file-list{font-size:11px;color:#5C6B60;margin-top:8px;line-height:1.4}
-.consents{display:grid;gap:8px;margin:14px 0 18px}
-.check{display:grid;grid-template-columns:16px 1fr;gap:8px;align-items:start;font-size:12.5px;color:#394D41;line-height:1.4}
-.check input{margin-top:2px;accent-color:#1F4533}
+
+/* Аккуратные чекбоксы 16х16 с комфортной областью клика */
+.consents{display:grid;gap:10px;margin:14px 0 18px}
+.check{
+  display:flex;
+  align-items:flex-start;
+  gap:10px;
+  font-size:13px;
+  color:#394D41;
+  line-height:1.45;
+  cursor:pointer;
+  padding:3px 0;
+}
+.check input[type="checkbox"]{
+  appearance: none;
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  border: 1.5px solid #AFC8B0;
+  border-radius: 4px;
+  background: #F4F8F4;
+  margin-top: 2px;
+  cursor: pointer;
+  display: grid;
+  place-content: center;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+}
+.check input[type="checkbox"]:hover {
+  border-color: #D9A830;
+}
+.check input[type="checkbox"]:checked {
+  background: #1F4533;
+  border-color: #1F4533;
+}
+.check input[type="checkbox"]:checked::before {
+  content: "✓";
+  color: #F5E59C;
+  font-size: 11px;
+  font-weight: 900;
+}
 .check a{text-decoration:underline;text-underline-offset:2px;color:#121F17}
+.check a:hover{color:#D9A830}
+
 .consult-note{padding:14px;border-radius:11px;background:#E1EFE3;border:1px solid #C8DBC9;color:#203328;font-size:12.5px;line-height:1.5;margin:0 0 14px}
 .aside-list{display:grid;gap:12px}
 .aside-item{padding:14px;border:1px solid #C8DBC9;border-radius:12px;background:#F4F8F4}
@@ -1304,44 +1344,7 @@ footer{padding:24px 0 32px;border-top:1px solid #C8DBC9;background:#D3E6D4;color
 
 <!-- КОНТАКТЫ -->
 <section class="contact sec-contact" id="contact"><div class="wrap"><span class="kicker">Первичная консультация</span><h2 class="title"><span class="metaltext">Расскажите о Вашей ситуации</span></h2><p class="sub">Для первичной консультации достаточно коротко обозначить стадию: пришло требование, информационное письмо, идёт камеральная проверка, назначена выездная или уже получен акт. Если удобно, сразу приложите документы от налогового органа.</p><div class="contact-box">
-  <div class="form">
-    <h3>Получить консультацию</h3>
-    <p>Это форма для запроса первичной консультации. Опишите ситуацию в свободной форме — и приложите документы: они помогут оперативно определить стадию и срочность вопроса.</p>
-    
-    <!-- ИЗМЕНЕНО: Форма теперь отправляется напрямую через Web3Forms без ошибок хостинга -->
-    <form action="https://api.web3forms.com/submit" method="POST" enctype="multipart/form-data">
-        <input type="hidden" name="access_key" value="6b3d569b-c2b1-454e-a5f1-42ba231e2029">
-        <input type="hidden" name="subject" value="Новая заявка с сайта Честный советник">
-        
-        <div class="fields">
-            <div class="field"><label>Имя</label><input required name="name" placeholder="Как к Вам обращаться"></div>
-            <div class="field"><label>Телефон или e-mail</label><input required name="email" placeholder="Контакт для связи"></div>
-            <div class="field full"><label>Что происходит</label><textarea name="message" placeholder="Например: получили информационное письмо; идут требования по контрагентам; назначена выездная проверка; получен акт..."></textarea></div>
-            
-            <div class="filebox">
-                <label for="docs">
-                    <span>
-                        <span class="file-title">Прикрепить документ</span>
-                        <span class="file-sub">Требование, уведомление, информационное письмо, решение о ВНП, акт или другой материал. Можно выбрать несколько файлов.</span>
-                    </span>
-                    <span class="file-btn">Выбрать файлы</span>
-                </label>
-                <input id="docs" name="attachment" type="file" multiple accept=".pdf,.doc,.docx,.xls,.xlsx,.jpg,.jpeg,.png">
-                <div class="file-list" id="file-list">PDF, DOC/DOCX, XLS/XLSX, JPG, PNG</div>
-            </div>
-        </div>
-        
-        <div class="consult-note"><strong>Важно:</strong> для первого обращения не требуется полный комплект документов. Прикладывайте только то, что уже есть под рукой и относится к текущему контакту с налоговым органом.</div>
-        
-        <div class="consents">
-            <label class="check"><input required type="checkbox"><span>Я даю согласие на обработку персональных данных и ознакомлен(а) с <a href="#" onclick="openModal('privacyModal'); return false;">Политикой конфиденциальности</a>.</span></label>
-            <label class="check"><input required type="checkbox"><span>Я принимаю условия <a href="#" onclick="openModal('offerModal'); return false;">договора публичной оферты на оказание первичной консультации</a>.</span></label>
-        </div>
-        
-        <button class="btn" type="submit">Получить консультацию →</button>
-    </form>
-  </div>
-  
+  <div class="form"><h3>Получить консультацию</h3><p>Это форма для запроса первичной консультации. Опишите ситуацию в свободной форме — и приложите документы: они помогут оперативно определить стадию и срочность вопроса.</p><form action="send.php" method="POST" enctype="multipart/form-data"><div class="fields"><div class="field"><label>Имя</label><input required name="name" placeholder="Как к Вам обращаться"></div><div class="field"><label>Телефон или e-mail</label><input required name="contact" placeholder="Контакт для связи"></div><div class="field full"><label>Что происходит</label><textarea name="message" placeholder="Например: получили информационное письмо; идут требования по контрагентам; назначена выездная проверка; получен акт..."></textarea></div><div class="filebox"><label for="docs"><span><span class="file-title">Прикрепить документ</span><span class="file-sub">Требование, уведомление, информационное письмо, решение о ВНП, акт или другой материал. Можно выбрать несколько файлов.</span></span><span class="file-btn">Выбрать файлы</span></label><input id="docs" name="docs[]" type="file" multiple accept=".pdf,.doc,.docx,.xls,.xlsx,.jpg,.jpeg,.png"><div class="file-list" id="file-list">PDF, DOC/DOCX, XLS/XLSX, JPG, PNG</div></div></div><div class="consult-note"><strong>Важно:</strong> для первого обращения не требуется полный комплект документов. Прикладывайте только то, что уже есть под рукой и относится к текущему контакту с налоговым органом.</div><div class="consents"><label class="check"><input required type="checkbox"><span>Я даю согласие на обработку персональных данных и ознакомлен(а) с <a href="#" onclick="openModal('privacyModal'); return false;">Политикой конфиденциальности</a>.</span></label><label class="check"><input required type="checkbox"><span>Я принимаю условия <a href="#" onclick="openModal('offerModal'); return false;">договора публичной оферты на оказание первичной консультации</a>.</span></label></div><button class="btn" type="submit">Получить консультацию →</button></form></div>
   <aside class="aside"><h3>План дальнейшего сотрудничества</h3><p>На первом этапе не нужен идеальный пакет документов. Наша задача — понять стадию и определить, как безопасно двигаться дальше.</p><div class="aside-list"><div class="aside-item"><strong>1. Уточняем стадию проверки</strong><span>Что уже произошло и какие действия ожидаются от компании.</span></div><div class="aside-item"><strong>2. Анализируем приложенные документы и материалы</strong><span>Определяем, какие сроки нельзя пропустить и какие документы требуют проверки до ответа.</span></div><div class="aside-item"><strong>3. Проводим первичную консультацию</strong><span>Объясняем риски, ближайшие действия и рекомендуемый формат дальнейшей работы.</span></div><div class="aside-item"><strong>4. Сохраняем конфиденциальность</strong><span>Обсуждаем ситуацию только с теми участниками, которым Вы доверяете.</span></div></div></aside>
 </div></div></section>
 </main>
