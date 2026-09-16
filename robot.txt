@@ -1,0 +1,7 @@
+Plaintext
+User-agent: *
+Disallow: /send.php
+Allow: /index.html
+Allow: /
+
+Sitemap: http://chestnyjsovetnik.ru/sitemap.xml
