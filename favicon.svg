@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <linearGradient id="bgGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F8EFA8"/>
+      <stop offset="50%" stop-color="#D9A830"/>
+      <stop offset="100%" stop-color="#C29B38"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Золотой фон фавиконки -->
+  <rect width="64" height="64" rx="14" fill="url(#bgGoldGrad)"/>
+  
+  <!-- Тонкая темная рамка для глубины -->
+  <rect x="3" y="3" width="58" height="58" rx="11" fill="none" stroke="#1F4533" stroke-width="2" opacity="0.3"/>
+
+  <!-- Щит и галочка контрастного темно-зеленого цвета -->
+  <path d="M32 12L48 18V30C48 40.5 39 49 32 52C25 49 16 40.5 16 30V18L32 12Z" fill="none" stroke="#1F4533" stroke-width="3.5" stroke-linejoin="round"/>
+  <path d="M25 31L30 36L39 25" fill="none" stroke="#1F4533" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
