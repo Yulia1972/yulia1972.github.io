@@ -17,6 +17,17 @@
 </script>
 <noscript><div><img src="https://mc.yandex.ru/watch/112648701" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <!-- /Yandex.Metrika counter -->
+
+<!-- EmailJS SDK -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script type="text/javascript">
+   (function(){
+      emailjs.init({
+        publicKey: "jwEZnIBd5CDy4n4GZ",
+      });
+   })();
+</script>
+
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Честный советник — сопровождение налоговых проверок и защита бизнеса</title>
@@ -1343,10 +1354,51 @@ footer{padding:24px 0 32px;border-top:1px solid #C8DBC9;background:#D3E6D4;color
 </div></section>
 
 <!-- КОНТАКТЫ -->
-<section class="contact sec-contact" id="contact"><div class="wrap"><span class="kicker">Первичная консультация</span><h2 class="title"><span class="metaltext">Расскажите о Вашей ситуации</span></h2><p class="sub">Для первичной консультации достаточно коротко обозначить стадию: пришло требование, информационное письмо, идёт камеральная проверка, назначена выездная или уже получен акт. Если удобно, сразу приложите документы от налогового органа.</p><div class="contact-box">
-  <div class="form"><h3>Получить консультацию</h3><p>Это форма для запроса первичной консультации. Опишите ситуацию в свободной форме — и приложите документы: они помогут оперативно определить стадию и срочность вопроса.</p><form action="send.php" method="POST" enctype="multipart/form-data"><div class="fields"><div class="field"><label>Имя</label><input required name="name" placeholder="Как к Вам обращаться"></div><div class="field"><label>Телефон или e-mail</label><input required name="contact" placeholder="Контакт для связи"></div><div class="field full"><label>Что происходит</label><textarea name="message" placeholder="Например: получили информационное письмо; идут требования по контрагентам; назначена выездная проверка; получен акт..."></textarea></div><div class="filebox"><label for="docs"><span><span class="file-title">Прикрепить документ</span><span class="file-sub">Требование, уведомление, информационное письмо, решение о ВНП, акт или другой материал. Можно выбрать несколько файлов.</span></span><span class="file-btn">Выбрать файлы</span></label><input id="docs" name="docs[]" type="file" multiple accept=".pdf,.doc,.docx,.xls,.xlsx,.jpg,.jpeg,.png"><div class="file-list" id="file-list">PDF, DOC/DOCX, XLS/XLSX, JPG, PNG</div></div></div><div class="consult-note"><strong>Важно:</strong> для первого обращения не требуется полный комплект документов. Прикладывайте только то, что уже есть под рукой и относится к текущему контакту с налоговым органом.</div><div class="consents"><label class="check"><input required type="checkbox"><span>Я даю согласие на обработку персональных данных и ознакомлен(а) с <a href="#" onclick="openModal('privacyModal'); return false;">Политикой конфиденциальности</a>.</span></label><label class="check"><input required type="checkbox"><span>Я принимаю условия <a href="#" onclick="openModal('offerModal'); return false;">договора публичной оферты на оказание первичной консультации</a>.</span></label></div><button class="btn" type="submit">Получить консультацию →</button></form></div>
-  <aside class="aside"><h3>План дальнейшего сотрудничества</h3><p>На первом этапе не нужен идеальный пакет документов. Наша задача — понять стадию и определить, как безопасно двигаться дальше.</p><div class="aside-list"><div class="aside-item"><strong>1. Уточняем стадию проверки</strong><span>Что уже произошло и какие действия ожидаются от компании.</span></div><div class="aside-item"><strong>2. Анализируем приложенные документы и материалы</strong><span>Определяем, какие сроки нельзя пропустить и какие документы требуют проверки до ответа.</span></div><div class="aside-item"><strong>3. Проводим первичную консультацию</strong><span>Объясняем риски, ближайшие действия и рекомендуемый формат дальнейшей работы.</span></div><div class="aside-item"><strong>4. Сохраняем конфиденциальность</strong><span>Обсуждаем ситуацию только с теми участниками, которым Вы доверяете.</span></div></div></aside>
-</div></div></section>
+<section class="contact sec-contact" id="contact">
+  <div class="wrap">
+    <span class="kicker">Первичная консультация</span>
+    <h2 class="title"><span class="metaltext">Расскажите о Вашей ситуации</span></h2>
+    <p class="sub">Для первичной консультации достаточно коротко обозначить стадию: пришло требование, информационное письмо, идёт камеральная проверка, назначена выездная или уже получен акт. Если удобно, сразу приложите документы от налогового органа.</p>
+    <div class="contact-box">
+      <div class="form">
+        <h3>Получить консультацию</h3>
+        <p>Это форма для запроса первичной консультации. Опишите ситуацию в свободной форме — и приложите документы: они помогут оперативно определить стадию и срочность вопроса.</p>
+        
+        <!-- Форма, адаптированная под EmailJS -->
+        <form id="contact-form">
+          <div class="fields">
+            <div class="field"><label>Имя</label><input required name="name" placeholder="Как к Вам обращаться"></div>
+            <div class="field"><label>Телефон или e-mail</label><input required name="contact" placeholder="Контакт для связи"></div>
+            <div class="field full"><label>Что происходит</label><textarea name="message" placeholder="Например: получили информационное письмо; идут требования по контрагентам; назначена выездная проверка; получен акт..."></textarea></div>
+            
+            <div class="filebox">
+                <label for="docs">
+                    <span>
+                        <span class="file-title">Прикрепить документ</span>
+                        <span class="file-sub">Требование, уведомление, информационное письмо, решение о ВНП, акт или другой материал.</span>
+                    </span>
+                    <span class="file-btn">Выбрать файлы</span>
+                </label>
+                <input id="docs" name="attachment" type="file" multiple accept=".pdf,.doc,.docx,.xls,.xlsx,.jpg,.jpeg,.png">
+                <div class="file-list" id="file-list">PDF, DOC/DOCX, XLS/XLSX, JPG, PNG</div>
+            </div>
+          </div>
+          
+          <div class="consult-note"><strong>Важно:</strong> для первого обращения не требуется полный комплект документов. Прикладывайте только то, что уже есть под рукой и относится к текущему контакту с налоговым органом.</div>
+          
+          <div class="consents">
+              <label class="check"><input required type="checkbox"><span>Я даю согласие на обработку персональных данных и ознакомлен(а) с <a href="#" onclick="openModal('privacyModal'); return false;">Политикой конфиденциальности</a>.</span></label>
+              <label class="check"><input required type="checkbox"><span>Я принимаю условия <a href="#" onclick="openModal('offerModal'); return false;">договора публичной оферты на оказание первичной консультации</a>.</span></label>
+          </div>
+          
+          <button class="btn" type="submit" id="submit-btn">Получить консультацию →</button>
+        </form>
+      </div>
+      
+      <aside class="aside"><h3>План дальнейшего сотрудничества</h3><p>На первом этапе не нужен идеальный пакет документов. Наша задача — понять стадию и определить, как безопасно двигаться дальше.</p><div class="aside-list"><div class="aside-item"><strong>1. Уточняем стадию проверки</strong><span>Что уже произошло и какие действия ожидаются от компании.</span></div><div class="aside-item"><strong>2. Анализируем приложенные документы и материалы</strong><span>Определяем, какие сроки нельзя пропустить и какие документы требуют проверки до ответа.</span></div><div class="aside-item"><strong>3. Проводим первичную консультацию</strong><span>Объясняем риски, ближайшие действия и рекомендуемый формат дальнейшей работы.</span></div><div class="aside-item"><strong>4. Сохраняем конфиденциальность</strong><span>Обсуждаем ситуацию только с теми участниками, которым Вы доверяете.</span></div></div></aside>
+    </div>
+  </div>
+</section>
 </main>
 
 <footer>
@@ -1452,6 +1504,28 @@ footer{padding:24px 0 32px;border-top:1px solid #C8DBC9;background:#D3E6D4;color
 <script>
 const docs=document.getElementById('docs');const list=document.getElementById('file-list');
 if(docs&&list){docs.addEventListener('change',()=>{const files=[...docs.files];list.textContent=files.length?files.map(f=>f.name).join(' • '):'PDF, DOC/DOCX, XLS/XLSX, JPG, PNG';});}
+
+// Скрипт отправки формы через EmailJS
+document.getElementById('contact-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const btn = document.getElementById('submit-btn');
+    btn.textContent = 'Отправка...';
+    btn.disabled = true;
+
+    emailjs.sendForm('service_th672sb', '__ejs-test-mail-service__', this)
+        .then(() => {
+            alert('Спасибо! Ваша заявка успешно отправлена. Мы свяжемся с вами в ближайшее время.');
+            document.getElementById('contact-form').reset();
+            list.textContent = 'PDF, DOC/DOCX, XLS/XLSX, JPG, PNG';
+            btn.textContent = 'Получить консультацию →';
+            btn.disabled = false;
+        }, (error) => {
+            alert('Ошибка отправки. Пожалуйста, попробуйте еще раз или свяжитесь с нами напрямую.');
+            console.error('FAILED...', error);
+            btn.textContent = 'Получить консультацию →';
+            btn.disabled = false;
+        });
+});
 
 function switchTab(tabId, btnElement) {
     document.querySelectorAll('.tab-content-panel').forEach(panel => {
