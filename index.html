@@ -1512,7 +1512,7 @@ document.getElementById('contact-form').addEventListener('submit', function(even
     btn.textContent = 'Отправка...';
     btn.disabled = true;
 
-    emailjs.sendForm('service_th672sb', '__ejs-test-mail-service__', this)
+    emailjs.sendForm('service_th672sb', 'template_7o3os8s', this)
         .then(() => {
             alert('Спасибо! Ваша заявка успешно отправлена. Мы свяжемся с вами в ближайшее время.');
             document.getElementById('contact-form').reset();
