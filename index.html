@@ -582,13 +582,6 @@ section{padding:90px 0; position:relative; border:0 !important;}
 .field input,.field textarea{border:1px solid #C8DBC9;border-radius:11px;background:#F4F8F4;padding:12px 14px;outline:none;color:#121F17;font-size:14px}
 .field textarea{min-height:100px;resize:vertical}
 .field input:focus,.field textarea:focus{border-color:#D9A830;box-shadow:0 0 0 3px rgba(217,168,48,.15)}
-.filebox{grid-column:1/-1;border:1px dashed #AFC8B0;border-radius:12px;background:linear-gradient(180deg,#F4F8F4,#E1EFE3);padding:14px}
-.filebox label{display:flex;align-items:center;justify-content:space-between;gap:14px;cursor:pointer}
-.filebox input[type=file]{position:absolute;opacity:0;pointer-events:none}
-.filebox .file-title{font-size:12.5px;font-weight:850;color:#121F17}
-.filebox .file-sub{display:block;margin-top:2px;font-size:11px;color:#5C6B60;font-weight:500}
-.filebox .file-btn{flex:none;padding:9px 12px;border-radius:9px;border:1px solid #AFC8B0;background:#fff;font-size:12.5px;font-weight:850;color:#1F4533}
-.file-list{font-size:11px;color:#5C6B60;margin-top:8px;line-height:1.4}
 
 /* Аккуратные чекбоксы 16х16 с комфортной областью клика */
 .consents{display:grid;gap:10px;margin:14px 0 18px}
@@ -633,7 +626,6 @@ section{padding:90px 0; position:relative; border:0 !important;}
 .check a{text-decoration:underline;text-underline-offset:2px;color:#121F17}
 .check a:hover{color:#D9A830}
 
-.consult-note{padding:14px;border-radius:11px;background:#E1EFE3;border:1px solid #C8DBC9;color:#203328;font-size:12.5px;line-height:1.5;margin:0 0 14px}
 .aside-list{display:grid;gap:12px}
 .aside-item{padding:14px;border:1px solid #C8DBC9;border-radius:12px;background:#F4F8F4}
 .aside-item strong{display:block;font-size:15px;margin-bottom:5px;color:#121F17}
@@ -1358,33 +1350,19 @@ footer{padding:24px 0 32px;border-top:1px solid #C8DBC9;background:#D3E6D4;color
   <div class="wrap">
     <span class="kicker">Первичная консультация</span>
     <h2 class="title"><span class="metaltext">Расскажите о Вашей ситуации</span></h2>
-    <p class="sub">Для первичной консультации достаточно коротко обозначить стадию: пришло требование, информационное письмо, идёт камеральная проверка, назначена выездная или уже получен акт. Если удобно, сразу приложите документы от налогового органа.</p>
+    <p class="sub">Для первичной консультации достаточно коротко обозначить стадию: пришло требование, информационное письмо, идёт камеральная проверка, назначена выездная или уже получен акт.</p>
     <div class="contact-box">
       <div class="form">
         <h3>Получить консультацию</h3>
-        <p>Это форма для запроса первичной консультации. Опишите ситуацию в свободной форме — и приложите документы: они помогут оперативно определить стадию и срочность вопроса.</p>
+        <p>Заполните форму, и мы свяжемся с вами для обсуждения ситуации.</p>
         
-        <!-- Форма, адаптированная под EmailJS -->
+        <!-- Форма для отправки текста без файлов через EmailJS -->
         <form id="contact-form">
           <div class="fields">
             <div class="field"><label>Имя</label><input required name="name" placeholder="Как к Вам обращаться"></div>
             <div class="field"><label>Телефон или e-mail</label><input required name="contact" placeholder="Контакт для связи"></div>
             <div class="field full"><label>Что происходит</label><textarea name="message" placeholder="Например: получили информационное письмо; идут требования по контрагентам; назначена выездная проверка; получен акт..."></textarea></div>
-            
-            <div class="filebox">
-                <label for="docs">
-                    <span>
-                        <span class="file-title">Прикрепить документ</span>
-                        <span class="file-sub">Требование, уведомление, информационное письмо, решение о ВНП, акт или другой материал.</span>
-                    </span>
-                    <span class="file-btn">Выбрать файлы</span>
-                </label>
-                <input id="docs" name="attachment" type="file" multiple accept=".pdf,.doc,.docx,.xls,.xlsx,.jpg,.jpeg,.png">
-                <div class="file-list" id="file-list">PDF, DOC/DOCX, XLS/XLSX, JPG, PNG</div>
-            </div>
           </div>
-          
-          <div class="consult-note"><strong>Важно:</strong> для первого обращения не требуется полный комплект документов. Прикладывайте только то, что уже есть под рукой и относится к текущему контакту с налоговым органом.</div>
           
           <div class="consents">
               <label class="check"><input required type="checkbox"><span>Я даю согласие на обработку персональных данных и ознакомлен(а) с <a href="#" onclick="openModal('privacyModal'); return false;">Политикой конфиденциальности</a>.</span></label>
@@ -1430,7 +1408,7 @@ footer{padding:24px 0 32px;border-top:1px solid #C8DBC9;background:#D3E6D4;color
       <ul>
         <li>Имя;</li>
         <li>Номер телефона и/или адрес электронной почты (e-mail);</li>
-        <li>Текстовое описание ситуации и прикрепленные файлы.</li>
+        <li>Текстовое описание ситуации.</li>
       </ul>
       <h3>3. Цели обработки персональных данных</h3>
       <p>3.1. Полученные данные используются исключительно для связи с пользователем с целью предоставления первичной правовой консультации.</p>
@@ -1502,10 +1480,7 @@ footer{padding:24px 0 32px;border-top:1px solid #C8DBC9;background:#D3E6D4;color
 </div>
 
 <script>
-const docs=document.getElementById('docs');const list=document.getElementById('file-list');
-if(docs&&list){docs.addEventListener('change',()=>{const files=[...docs.files];list.textContent=files.length?files.map(f=>f.name).join(' • '):'PDF, DOC/DOCX, XLS/XLSX, JPG, PNG';});}
-
-// Скрипт отправки формы через EmailJS
+// Скрипт отправки формы через EmailJS (текстовые заявки)
 document.getElementById('contact-form').addEventListener('submit', function(event) {
     event.preventDefault();
     const btn = document.getElementById('submit-btn');
@@ -1516,7 +1491,6 @@ document.getElementById('contact-form').addEventListener('submit', function(even
         .then(() => {
             alert('Спасибо! Ваша заявка успешно отправлена. Мы свяжемся с вами в ближайшее время.');
             document.getElementById('contact-form').reset();
-            list.textContent = 'PDF, DOC/DOCX, XLS/XLSX, JPG, PNG';
             btn.textContent = 'Получить консультацию →';
             btn.disabled = false;
         }, (error) => {
