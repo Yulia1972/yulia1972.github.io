@@ -98,13 +98,14 @@ header{
 
 /* ===== HERO ===== */
 .hero{
-  padding:88px 0 72px;
-  background:linear-gradient(180deg,#F4F9F5 0%,#EDF5EE 100%);
+  padding:88px 0 90px;
+  background:linear-gradient(180deg,#F4F9F5 0%,#EDF5EE 70%,#F7FAF7 100%);
 }
 .hero-grid{
   display:grid;
-  grid-template-columns:1.2fr 0.8fr;
-  gap:56px;align-items:center;
+  grid-template-columns:1.35fr 0.75fr;
+  gap:40px;
+  align-items:center;
 }
 .hero h1{
   font-family:'Cinzel',serif;
@@ -121,16 +122,17 @@ header{
   margin-bottom:28px;line-height:1.65;
 }
 .hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:26px}
-.hero-tags{display:flex;gap:10px;flex-wrap:wrap}
+.hero-tags{display:flex;gap:8px;flex-wrap:nowrap}
 .tag{
   font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;
-  padding:7px 14px;border-radius:100px;background:#fff;
+  padding:7px 12px;border-radius:100px;background:#fff;white-space:nowrap;
   border:1px solid var(--line);color:var(--steel);
 }
 .hero-card{
   background:#fff;border:1px solid var(--line);border-radius:22px;
   padding:36px 28px;text-align:center;
   box-shadow:var(--shadow);
+  margin-top:-110px;
 }
 .hero-card svg{width:110px;height:130px;margin-bottom:18px}
 .hero-card .big{
@@ -182,8 +184,9 @@ section{padding:72px 0}
 }
 
 /* signals slightly different bg */
-.sec-signals{background:#fff}
-.sec-why{background:#fff}
+.sec-signals{background:linear-gradient(180deg,#F7FAF7 0%,#fff 80px)}
+.sec-why{background:linear-gradient(180deg,#fff 0%,#F8FBF8 100%);
+background:#fff}
 
 /* ===== CONTACT ===== */
 .sec-contact{
@@ -353,7 +356,8 @@ footer{
   display:block;
 }
 .sec-signals,
-.sec-why{
+.sec-why{background:linear-gradient(180deg,#fff 0%,#F8FBF8 100%);
+
   position:relative;
 }
 .sec-signals::before,
@@ -601,7 +605,7 @@ footer{
       <a href="#cases">Практика</a>
       <a href="#contact">Контакты</a>
     </nav>
-    <a href="detailed.html" class="btn" style="padding:11px 20px;font-size:14px">Полный сайт</a>
+    <a href="detailed.html" class="btn" style="padding:11px 20px;font-size:14px;background:#3D4A35;border-color:#3D4A35;color:#fff">Полный сайт</a>
     <button class="burger" id="burgerBtn" aria-label="Меню" onclick="document.getElementById('mainNav').classList.toggle('open')">
       <span></span><span></span><span></span>
     </button>
@@ -616,7 +620,7 @@ footer{
       <p class="lead">Защищаем бизнес от налоговых претензий на языке ФНС. Подключаемся от первых признаков повышенного внимания инспекции до возражений, апелляции и судебной защиты.</p>
       <div class="hero-actions">
         <a href="#contact" class="btn">Получить консультацию</a>
-        <a href="#services" class="btn btn-cream">Как мы работаем</a>
+        
       </div>
       <div class="hero-tags">
         <span class="tag">Вся Россия</span>
